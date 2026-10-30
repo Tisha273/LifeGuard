@@ -60,11 +60,12 @@ if (fs.existsSync(buildPath)) {
   console.log("📦 Serving compiled React PWA from:", buildPath);
   app.use(express.static(buildPath));
 
-  app.get("*", (req, res, next) => {
-    if (req.path.startsWith("/api")) {
-      return next();
+  // Express 5 compatible SPA fallback
+  app.use((req, res, next) => {
+    if (req.method === "GET" && !req.path.startsWith("/api")) {
+      return res.sendFile(path.join(buildPath, "index.html"));
     }
-    res.sendFile(path.join(buildPath, "index.html"));
+    next();
   });
 } else {
   /* ================= TEST ROUTE ================= */
