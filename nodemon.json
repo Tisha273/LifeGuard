@@ -1,0 +1,14 @@
+{
+  "watch": ["backend"],
+  "ignore": [
+    "backend/.mongo_data/**",
+    ".mongo_data/**",
+    "node_modules/**",
+    "backend/node_modules/**",
+    "src/**",
+    "public/**",
+    "build/**",
+    "*.log"
+  ],
+  "ext": "js,json"
+}

@@ -1,0 +1,9 @@
+{
+  "watch": ["."],
+  "ignore": [
+    ".mongo_data/**",
+    "node_modules/**",
+    "*.log"
+  ],
+  "ext": "js,json"
+}

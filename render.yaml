@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: lifeguard-health
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build && cd backend && npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

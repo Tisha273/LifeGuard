@@ -1,0 +1,79 @@
+.nav-container {
+  width: 100%;
+  padding: 20px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.logo span {
+  color: #00ffd5;
+}
+
+/* MENU DOT */
+.menu-dot {
+  font-size: 34px;
+  border: 2px solid black;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .3s;
+  background: white;
+}
+
+.menu-dot:hover {
+  transform: scale(1.1);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 70px;
+  right: 80px;
+  width: 460px;
+  height: 75px;
+  border-radius: 60px;
+  border: 2px solid black;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38px;
+  font-size: 20px;
+  animation: pop .4s ease;
+}
+
+.popup a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.popup a:hover {
+  color: #7a3cff;
+}
+
+.close-btn {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@keyframes pop {
+  from { transform: scale(.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

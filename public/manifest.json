@@ -1,0 +1,73 @@
+{
+  "short_name": "LifeGuard",
+  "name": "LifeGuard — AI Clinical Health Companion",
+  "description": "Personal AI Clinical Health Companion with Prescription Scanning, Clinical Assessment, Medication Reminders, and Medical Wallet.",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#071424",
+  "background_color": "#071424",
+  "orientation": "portrait-primary",
+  "categories": ["medical", "health", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Prescription Scanner",
+      "short_name": "Scanner",
+      "description": "Scan and understand prescriptions & lab reports",
+      "url": "/app/scanner",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Quick Check",
+      "short_name": "Assess",
+      "description": "Assess symptoms clinically",
+      "url": "/app/quick",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Medication Reminders",
+      "short_name": "Reminders",
+      "description": "Track and alert daily medication schedule",
+      "url": "/app/reminders",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Medical Wallet",
+      "short_name": "Wallet",
+      "description": "Secure document vault and health records",
+      "url": "/app/wallet",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,500 @@
+/* ================= MEDICAL WALLET STYLES ================= */
+
+.wallet-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 80px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0f172a;
+}
+
+.wallet-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.wallet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  color: #0d9488;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.wallet-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.wallet-subtitle {
+  color: #64748b;
+  font-size: 14.5px;
+  margin: 0;
+}
+
+/* Upload & Search Toolbar */
+.wallet-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.wallet-search-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.wallet-search-input:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+}
+
+.wallet-upload-btn {
+  padding: 11px 20px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #0d9488, #0284c7);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
+  transition: all 0.2s;
+}
+
+.wallet-upload-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.35);
+}
+
+/* Filter Pills */
+.wallet-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.wallet-filter-pill {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.wallet-filter-pill.active {
+  background: #0d9488;
+  color: #ffffff;
+  border-color: #0d9488;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+}
+
+/* Add Record Card / Form */
+.wallet-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  animation: wallet-fade-in 0.3s ease;
+}
+
+@keyframes wallet-fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wallet-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.wallet-form-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.wallet-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.wallet-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wallet-form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.wallet-form-input,
+.wallet-form-select,
+.wallet-form-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.wallet-form-input:focus,
+.wallet-form-select:focus,
+.wallet-form-textarea:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+}
+
+.wallet-file-dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.wallet-file-dropzone:hover {
+  border-color: #0d9488;
+  background: #f0fdfa;
+}
+
+.wallet-file-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* Records Grid */
+.wallet-records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+
+.wallet-record-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1.5px solid #e2e8f0;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s;
+}
+
+.wallet-record-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.wallet-record-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.wallet-record-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f0fdfa;
+  color: #0d9488;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wallet-record-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+.wallet-record-type {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.wallet-record-notes {
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  border: 1px solid #f1f5f9;
+}
+
+.wallet-record-meta {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wallet-record-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.wallet-view-btn {
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #0d9488;
+  background: #f0fdfa;
+  color: #0d9488;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.wallet-view-btn:hover {
+  background: #0d9488;
+  color: #ffffff;
+}
+
+.wallet-delete-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wallet-delete-btn:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+/* Empty State */
+.wallet-empty {
+  text-align: center;
+  padding: 50px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px dashed #cbd5e1;
+  color: #64748b;
+}
+
+/* Document Viewer Modal */
+.wallet-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.wallet-modal-card {
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.wallet-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.wallet-modal-content {
+  flex: 1;
+  overflow-y: auto;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.wallet-preview-img {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   DARK THEME OVERRIDES FOR MEDICAL WALLET
+   ========================================================================== */
+[data-theme="dark"] .wallet-container {
+  color: #e8f3ff;
+}
+
+[data-theme="dark"] .wallet-title {
+  color: #f1f7ff;
+}
+
+[data-theme="dark"] .wallet-subtitle {
+  color: #8da8ce;
+}
+
+[data-theme="dark"] .wallet-badge {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+[data-theme="dark"] .wallet-toolbar,
+[data-theme="dark"] .wallet-form-card,
+[data-theme="dark"] .wallet-record-card,
+[data-theme="dark"] .wallet-empty,
+[data-theme="dark"] .wallet-modal-card {
+  background: #0f223f !important;
+  border-color: rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .wallet-search-input,
+[data-theme="dark"] .wallet-form-input,
+[data-theme="dark"] .wallet-form-select,
+[data-theme="dark"] .wallet-form-textarea {
+  background: #0a1932 !important;
+  border-color: rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .wallet-filter-pill {
+  background: #142d54 !important;
+  border-color: rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+[data-theme="dark"] .wallet-filter-pill.active {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .wallet-file-dropzone {
+  background: #0a1932 !important;
+  border-color: rgba(180, 220, 255, 0.25) !important;
+}
+
+[data-theme="dark"] .wallet-file-dropzone:hover {
+  background: #0e2242 !important;
+  border-color: #2dd4bf !important;
+}
+
+[data-theme="dark"] .wallet-file-selected {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(52, 211, 153, 0.35) !important;
+}
+
+[data-theme="dark"] .wallet-record-icon-badge {
+  background: #142d54 !important;
+  border-color: rgba(180, 220, 255, 0.16) !important;
+}
+
+[data-theme="dark"] .wallet-record-info h4 {
+  color: #f1f7ff !important;
+}
+
+[data-theme="dark"] .wallet-record-notes {
+  background: #0a1932 !important;
+  border-color: rgba(180, 220, 255, 0.12) !important;
+  color: #cbdcf5 !important;
+}
+
+[data-theme="dark"] .wallet-record-meta {
+  color: #8da8ce !important;
+}
+
+[data-theme="dark"] .wallet-view-btn {
+  background: #142d54 !important;
+  border-color: rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+[data-theme="dark"] .wallet-delete-btn {
+  background: rgba(225, 29, 72, 0.15) !important;
+  border-color: rgba(225, 29, 72, 0.3) !important;
+  color: #fb7185 !important;
+}
+
+[data-theme="dark"] .wallet-modal-header {
+  border-color: rgba(180, 220, 255, 0.12);
+}

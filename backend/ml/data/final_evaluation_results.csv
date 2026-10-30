@@ -1,0 +1,2 @@
+Model,Test Size,Accuracy,Precision,Recall,Specificity,F1,ROC-AUC,Brier Score,True Negative,False Positive,False Negative,True Positive
+Logistic Regression,61,0.9016393442622951,0.8666666666666667,0.9285714285714286,0.8787878787878788,0.896551724137931,0.9675324675324675,0.08651548433518418,29,4,2,26

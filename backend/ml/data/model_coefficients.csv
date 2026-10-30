@@ -1,0 +1,26 @@
+feature,coefficient,absolute_coefficient,direction
+categorical__ca_0.0,-0.783417870163208,0.783417870163208,Lower model score for disease class
+categorical__cp_4.0,0.6932549055154961,0.6932549055154961,Higher model score for disease class
+categorical__thal_7.0,0.5312723204698538,0.5312723204698538,Higher model score for disease class
+binary__sex,0.5192196004712314,0.5192196004712314,Higher model score for disease class
+categorical__thal_3.0,-0.4998450533594222,0.4998450533594222,Lower model score for disease class
+binary__exang,0.41921567911762203,0.41921567911762203,Higher model score for disease class
+numeric__oldpeak,0.41482900242865123,0.41482900242865123,Higher model score for disease class
+categorical__cp_3.0,-0.3893413534924293,0.3893413534924293,Lower model score for disease class
+categorical__ca_2.0,0.346768148713649,0.346768148713649,Higher model score for disease class
+numeric__thalach,-0.346530606407066,0.346530606407066,Lower model score for disease class
+categorical__slope_2.0,0.28798414693663144,0.28798414693663144,Higher model score for disease class
+categorical__ca_1.0,0.2844788155970429,0.2844788155970429,Higher model score for disease class
+categorical__slope_1.0,-0.24308825553767227,0.24308825553767227,Lower model score for disease class
+categorical__cp_1.0,-0.21151428587100532,0.21151428587100532,Lower model score for disease class
+numeric__trestbps,0.20341640952364146,0.20341640952364146,Higher model score for disease class
+categorical__restecg_0.0,-0.15528591618650173,0.15528591618650173,Lower model score for disease class
+categorical__ca_3.0,0.15221103249333906,0.15221103249333906,Higher model score for disease class
+categorical__restecg_2.0,0.1423438038721111,0.1423438038721111,Higher model score for disease class
+numeric__chol,0.10379768347970417,0.10379768347970417,Higher model score for disease class
+categorical__cp_2.0,-0.09235913951123834,0.09235913951123834,Lower model score for disease class
+binary__fbs,-0.04628901191789036,0.04628901191789036,Lower model score for disease class
+categorical__slope_3.0,-0.04485576475813617,0.04485576475813617,Lower model score for disease class
+categorical__thal_6.0,-0.03138714046960836,0.03138714046960836,Lower model score for disease class
+categorical__restecg_1.0,0.01298223895521359,0.01298223895521359,Higher model score for disease class
+numeric__age,-0.0029587033507690983,0.0029587033507690983,Lower model score for disease class

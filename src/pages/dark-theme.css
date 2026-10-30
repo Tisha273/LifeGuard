@@ -1,0 +1,1187 @@
+/* ===================================================
+      🌙 OFFICIAL DARK THEME — LIFEGUARD
+      Clean Neon Healthcare Dark UI — ZERO WHITE BOXES
+===================================================*/
+
+html[data-theme="dark"] {
+  --bg1: #071423;
+  --bg2: #0a1c33;
+
+  --card: #0f223f;
+  --card-2: #142d54;
+
+  --text: #e8f3ff;
+  --muted: #b2c8ff;
+
+  --primary: #1ed4ff;
+  --primary2: #1eeac4;
+
+  --border: rgba(180, 220, 255, 0.16);
+  --shadow: 0 25px 55px rgba(0, 0, 0, 0.75);
+}
+
+/* 🌙 ROOT APP & BODY */
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background: radial-gradient(circle at 10% 10%, #0c1a30 0%, #071224 45%, #030a14 100%) !important;
+  animation: none !important;
+  color: var(--text) !important;
+}
+
+html[data-theme="dark"] .app,
+html[data-theme="dark"] .dashboard-root,
+html[data-theme="dark"] .community-root,
+html[data-theme="dark"] .reminders-root,
+html[data-theme="dark"] .wallet-root,
+html[data-theme="dark"] .settings-root {
+  background: radial-gradient(circle at 10% 10%, #0c1a30 0%, #071224 45%, #030a14 100%) !important;
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] main.content {
+  background: transparent !important;
+}
+
+/* 🌙 CATCH-ALL SAFETY FOR ANY INLINE LIGHT BACKGROUNDS */
+html[data-theme="dark"] [style*="background: white"],
+html[data-theme="dark"] [style*="background: #ffffff"],
+html[data-theme="dark"] [style*="background: rgb(255, 255, 255)"],
+html[data-theme="dark"] [style*="background: #f0fdfa"],
+html[data-theme="dark"] [style*="background: #f8fafc"],
+html[data-theme="dark"] [style*="background: #f1f5f9"] {
+  background: #0f223f !important;
+}
+
+/* 🌙 UNIVERSAL CARDS & GLASS SURFACES */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .glass-card,
+html[data-theme="dark"] .dashboard-root .card,
+html[data-theme="dark"] .community-root .card,
+html[data-theme="dark"] .reminders-root .card,
+html[data-theme="dark"] .wallet-root .card,
+html[data-theme="dark"] .settings-root .card,
+html[data-theme="dark"] .top-grid .card,
+html[data-theme="dark"] .bottom-grid .card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+  color: #e8f3ff !important;
+}
+
+/* 🌙 SIDEBAR */
+html[data-theme="dark"] aside.sidebar {
+  background: linear-gradient(180deg, #0c1b33, #081426) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: white !important;
+}
+
+html[data-theme="dark"] .menu a {
+  color: #e5f2ff !important;
+}
+
+html[data-theme="dark"] .menu a.active,
+html[data-theme="dark"] .menu a:hover {
+  background: linear-gradient(90deg, rgba(64, 225, 255, 0.28), rgba(32, 227, 197, 0.2)) !important;
+  box-shadow: 0 0 22px rgba(74, 212, 255, 0.5) !important;
+}
+
+html[data-theme="dark"] .sidebar-profile-card {
+  background: #10264a !important;
+  border: 1px solid rgba(180, 220, 255, 0.15) !important;
+}
+html[data-theme="dark"] .sidebar-user-name {
+  color: #f1f7ff !important;
+}
+html[data-theme="dark"] .sidebar-user-role {
+  color: #8da8ce !important;
+}
+
+/* 🌙 TOPBAR */
+html[data-theme="dark"] .topbar {
+  background: rgba(12, 27, 51, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+html[data-theme="dark"] .topbar div {
+  color: #f1f5f9 !important;
+}
+html[data-theme="dark"] .topbar select,
+html[data-theme="dark"] .topbar-lang-select {
+  background: #0a1932 !important;
+  color: #2dd4bf !important;
+  border: 1.5px solid rgba(45, 212, 191, 0.4) !important;
+}
+
+/* 🌙 SIDEBAR LOGOUT */
+html[data-theme="dark"] .btn-sidebar-logout {
+  background: rgba(225, 29, 72, 0.15) !important;
+  border: 1px solid rgba(225, 29, 72, 0.35) !important;
+  color: #fb7185 !important;
+}
+html[data-theme="dark"] .btn-sidebar-logout:hover {
+  background: #e11d48 !important;
+  color: white !important;
+}
+
+/* 🌙 TYPOGRAPHY & TEXT */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] span,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .small,
+html[data-theme="dark"] .muted {
+  color: #cbdcf5;
+}
+
+/* 🌙 INPUTS / TEXTAREA / SELECT */
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background: #0a1932 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  border-radius: 10px;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus {
+  border-color: #2dd4bf !important;
+  outline: none !important;
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.25) !important;
+}
+
+/* 🌙 UNIVERSAL BADGES */
+html[data-theme="dark"] .scanner-badge,
+html[data-theme="dark"] .triage-badge,
+html[data-theme="dark"] .reminders-badge,
+html[data-theme="dark"] .wallet-badge,
+html[data-theme="dark"] .community-badge,
+html[data-theme="dark"] .settings-badge,
+html[data-theme="dark"] .diet-badge {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border: 1px solid rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+/* ===================================================
+   1. DASHBOARD DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .real-dash-root {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .real-header-card,
+html[data-theme="dark"] .real-panel,
+html[data-theme="dark"] .real-streak-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+html[data-theme="dark"] .real-patient-name,
+html[data-theme="dark"] .panel-heading,
+html[data-theme="dark"] .streak-main-title,
+html[data-theme="dark"] .dose-big-num {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .panel-subtext,
+html[data-theme="dark"] .streak-sub-title,
+html[data-theme="dark"] .dose-sub-txt {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .meta-pill {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .real-avatar-circle {
+  background: rgba(13, 148, 136, 0.25) !important;
+  border: 1px solid rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .real-patient-badge {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border: 1px solid rgba(52, 211, 153, 0.35) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme="dark"] .real-dose-card {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.25) 0%, rgba(15, 118, 110, 0.3) 100%) !important;
+  border: 1px solid rgba(45, 212, 191, 0.3) !important;
+}
+
+html[data-theme="dark"] .flame-icon-box {
+  background: rgba(249, 115, 22, 0.2) !important;
+  border: 1px solid rgba(251, 146, 60, 0.35) !important;
+}
+
+html[data-theme="dark"] .streak-top-right {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .streak-basis-tag {
+  color: #fdba74 !important;
+  background: rgba(249, 115, 22, 0.15) !important;
+  border: 1px solid rgba(251, 146, 60, 0.3) !important;
+}
+
+html[data-theme="dark"] .habits-counter-pill {
+  color: #6ee7b7 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(52, 211, 153, 0.3) !important;
+}
+
+html[data-theme="dark"] .water-count-display {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .btn-water-step,
+html[data-theme="dark"] .btn-quick-water,
+html[data-theme="dark"] .btn-habit-breathe {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .btn-water-step:hover,
+html[data-theme="dark"] .btn-quick-water:hover,
+html[data-theme="dark"] .btn-habit-breathe:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .week-today-badge {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border: 1px solid rgba(45, 212, 191, 0.3) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .day-bubble {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .day-bubble.bubble-active {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(52, 211, 153, 0.4) !important;
+}
+
+html[data-theme="dark"] .day-bubble .bubble-day {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .action-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .action-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .action-desc {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .card-scanner .action-icon,
+html[data-theme="dark"] .card-scanner .action-badge {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border: 1px solid rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .card-triage .action-icon,
+html[data-theme="dark"] .card-triage .action-badge {
+  background: rgba(99, 102, 241, 0.2) !important;
+  border: 1px solid rgba(129, 140, 248, 0.35) !important;
+  color: #a5b4fc !important;
+}
+
+html[data-theme="dark"] .btn-scanner {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-triage {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .habit-item {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+html[data-theme="dark"] .habit-item:hover {
+  background: #1a396a !important;
+  border-color: rgba(45, 212, 191, 0.4) !important;
+}
+
+html[data-theme="dark"] .habit-item.habit-completed {
+  background: linear-gradient(145deg, #0e2a3a, #0b2332) !important;
+  border-color: rgba(45, 212, 191, 0.4) !important;
+}
+
+html[data-theme="dark"] .habit-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .habit-desc {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .btn-habit-action {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .btn-habit-action.btn-habit-done {
+  background: #059669 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .real-reminder-row {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .real-reminder-row:hover {
+  background: #1a396a !important;
+}
+
+html[data-theme="dark"] .real-reminder-row.row-taken {
+  background: #0e2a3a !important;
+}
+
+html[data-theme="dark"] .med-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .med-details {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .time-badge {
+  background: #09172e !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .btn-taken-pill {
+  background: #0a1932 !important;
+  border: 1.5px solid rgba(180, 220, 255, 0.2) !important;
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .btn-taken-pill.pill-taken {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(52, 211, 153, 0.35) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme="dark"] .trend-chart-box {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .trend-chart-box text {
+  fill: #8da8ce !important;
+}
+
+html[data-theme="dark"] .breathing-modal-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .modal-peace-badge {
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: #a5b4fc !important;
+  border: 1px solid rgba(129, 140, 248, 0.3) !important;
+}
+
+html[data-theme="dark"] .btn-cancel-breathe {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+/* ===================================================
+   2. LABRX SCAN / PRESCRIPTION SCANNER DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .scanner-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .scanner-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .scanner-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .scanner-control-card,
+html[data-theme="dark"] .doc-top-card,
+html[data-theme="dark"] .section-card,
+html[data-theme="dark"] .bottom-actions-card,
+html[data-theme="dark"] .scanner-loading-box {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .scanner-presets-bar {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .preset-chip {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.18) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .preset-chip:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .preset-chip.active {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .scanner-dropzone {
+  background: #0a1932 !important;
+  border: 2px dashed rgba(180, 220, 255, 0.25) !important;
+}
+
+html[data-theme="dark"] .scanner-dropzone:hover {
+  background: #0e2242 !important;
+  border-color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .dropzone-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .dropzone-sub {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .pill-rx {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border: 1px solid rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .pill-lab {
+  background: rgba(225, 29, 72, 0.2) !important;
+  border: 1px solid rgba(251, 113, 133, 0.35) !important;
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .ai-model-tag {
+  background: rgba(13, 148, 136, 0.2) !important;
+  border: 1px solid rgba(45, 212, 191, 0.3) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .confidence-pill {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .doc-meta-grid {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .doc-meta-item {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .meta-label {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .meta-val {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .voice-narrator-bar {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .drug-clash-card {
+  background: linear-gradient(145deg, #2b1118, #1c0c11) !important;
+  border: 1px solid rgba(244, 63, 94, 0.35) !important;
+}
+
+html[data-theme="dark"] .clash-item-box {
+  background: #1c0c11 !important;
+  border: 1px solid rgba(244, 63, 94, 0.25) !important;
+}
+
+html[data-theme="dark"] .med-card {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .med-name {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .med-purpose,
+html[data-theme="dark"] .med-precautions {
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .med-dosage-tag {
+  background: rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .med-schedule-box {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .schedule-row {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.1) !important;
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .med-precautions {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"] .lab-card {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .lab-card.normal {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(52, 211, 153, 0.3) !important;
+}
+
+html[data-theme="dark"] .lab-card.elevated {
+  background: rgba(225, 29, 72, 0.12) !important;
+  border: 1px solid rgba(251, 113, 133, 0.3) !important;
+}
+
+html[data-theme="dark"] .guidance-box {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .lifestyle-box h4 {
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .redflag-box {
+  background: rgba(225, 29, 72, 0.1) !important;
+  border-color: rgba(244, 63, 94, 0.3) !important;
+}
+
+html[data-theme="dark"] .redflag-box h4 {
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .btn-action-view-reminders,
+html[data-theme="dark"] .btn-action-print {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.18) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .btn-action-view-reminders:hover,
+html[data-theme="dark"] .btn-action-print:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+/* ===================================================
+   3. QUICK CHECK / CLINICAL TRIAGE DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .triage-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .triage-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .triage-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .triage-card,
+html[data-theme="dark"] .triage-result-card,
+html[data-theme="dark"] .triage-history-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .voice-status-text {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .voice-substatus {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .symptom-textarea,
+html[data-theme="dark"] .symptom-box,
+html[data-theme="dark"] .quick-input {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] .symptom-chip {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .symptom-chip:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-clear {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .btn-clear:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .triage-result-card.level-emergency {
+  background: linear-gradient(180deg, rgba(69, 10, 10, 0.8) 0%, #0f223f 40%) !important;
+  border: 1px solid rgba(244, 63, 94, 0.35) !important;
+}
+
+html[data-theme="dark"] .triage-result-card.level-clinic {
+  background: linear-gradient(180deg, rgba(69, 26, 3, 0.8) 0%, #0f223f 40%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+html[data-theme="dark"] .triage-result-card.level-home {
+  background: linear-gradient(180deg, rgba(5, 46, 22, 0.8) 0%, #0f223f 40%) !important;
+  border: 1px solid rgba(34, 197, 94, 0.35) !important;
+}
+
+html[data-theme="dark"] .badge-emergency {
+  background: rgba(225, 29, 72, 0.2) !important;
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .badge-clinic {
+  background: rgba(245, 158, 11, 0.2) !important;
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"] .badge-home {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme="dark"] .organ-system-tag {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .gemini-source-tag {
+  background: #142d54 !important;
+  border: 1px solid rgba(45, 212, 191, 0.3) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .voice-player-bar {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .protocol-box {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .btn-call-emergency {
+  background: #ffffff !important;
+  color: #b91c1c !important;
+}
+
+html[data-theme="dark"] .btn-save-record {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .history-item {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .history-item:hover {
+  background: #1a396a !important;
+}
+
+html[data-theme="dark"] .history-symptoms {
+  color: #cbdcf5 !important;
+}
+
+/* ===================================================
+   4. REMINDERS DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .reminders-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .reminders-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .reminders-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .reminders-control-bar,
+html[data-theme="dark"] .reminders-form-card,
+html[data-theme="dark"] .reminder-item-card,
+html[data-theme="dark"] .reminders-empty {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .quick-min-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.18) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .reminders-input,
+html[data-theme="dark"] .reminders-select {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .reminder-name {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .reminder-meta {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .reminder-type-badge {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .reminder-test-single-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .reminder-delete-btn {
+  background: rgba(225, 29, 72, 0.15) !important;
+  border: 1px solid rgba(225, 29, 72, 0.3) !important;
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .ringing-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .ringing-details-box {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .snooze-alarm-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+/* ===================================================
+   5. MEDICAL WALLET DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .wallet-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .wallet-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .wallet-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .wallet-toolbar,
+html[data-theme="dark"] .wallet-form-card,
+html[data-theme="dark"] .wallet-record-card,
+html[data-theme="dark"] .wallet-empty,
+html[data-theme="dark"] .wallet-modal-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .wallet-search-input,
+html[data-theme="dark"] .wallet-form-input,
+html[data-theme="dark"] .wallet-form-select,
+html[data-theme="dark"] .wallet-form-textarea {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .wallet-filter-pill {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .wallet-filter-pill.active {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .wallet-file-dropzone {
+  background: #0a1932 !important;
+  border: 2px dashed rgba(180, 220, 255, 0.25) !important;
+}
+
+html[data-theme="dark"] .wallet-file-dropzone:hover {
+  background: #0e2242 !important;
+  border-color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .wallet-file-selected {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border: 1px solid rgba(52, 211, 153, 0.35) !important;
+}
+
+html[data-theme="dark"] .wallet-record-icon-badge {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .wallet-record-info h4 {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .wallet-record-notes {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .wallet-record-meta {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .wallet-view-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .wallet-delete-btn {
+  background: rgba(225, 29, 72, 0.15) !important;
+  border: 1px solid rgba(225, 29, 72, 0.3) !important;
+  color: #fb7185 !important;
+}
+
+/* ===================================================
+   6. COMMUNITY DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .community-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .community-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .community-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .composer-card,
+html[data-theme="dark"] .community-post-card,
+html[data-theme="dark"] .community-empty-box {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .composer-textarea {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .composer-cat-pill,
+html[data-theme="dark"] .community-tab-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .composer-cat-pill.active,
+html[data-theme="dark"] .community-tab-btn.active {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .post-author-name {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .post-time {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .post-content {
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .post-cat-badge {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+  color: #2dd4bf !important;
+}
+
+html[data-theme="dark"] .post-action-btn {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .post-action-btn.liked {
+  background: rgba(225, 29, 72, 0.2) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .post-delete-btn {
+  background: rgba(225, 29, 72, 0.15) !important;
+  border: 1px solid rgba(225, 29, 72, 0.3) !important;
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .comment-bubble {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .comment-author {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .comment-text {
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .comment-input {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+/* ===================================================
+   7. SETTINGS DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .settings-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .settings-title {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .settings-subtitle {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .settings-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .settings-section-title {
+  color: #f1f7ff !important;
+  border-bottom: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .settings-field label {
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .settings-input,
+html[data-theme="dark"] .settings-select {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .settings-toggle-label {
+  color: #f1f7ff !important;
+}
+
+html[data-theme="dark"] .settings-toggle-desc {
+  color: #8da8ce !important;
+}
+
+html[data-theme="dark"] .avatar-option {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .avatar-option:hover {
+  background: #1a396a !important;
+}
+
+html[data-theme="dark"] .avatar-option.selected {
+  border-color: #14b8a6 !important;
+  background: rgba(13, 148, 136, 0.25) !important;
+}
+
+html[data-theme="dark"] .settings-btn-secondary {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.18) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .settings-btn-secondary:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+/* ===================================================
+   8. DIET PLANNER DARK STYLES
+   =================================================== */
+html[data-theme="dark"] .diet-container {
+  color: #e8f3ff !important;
+}
+
+html[data-theme="dark"] .diet-card,
+html[data-theme="dark"] .timeline-card {
+  background: #0f223f !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .condition-pill {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.16) !important;
+  color: #cbdcf5 !important;
+}
+
+html[data-theme="dark"] .condition-pill:hover {
+  background: #1a396a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .condition-pill.selected {
+  background: #059669 !important;
+  color: #ffffff !important;
+  border-color: #34d399 !important;
+}
+
+html[data-theme="dark"] .pref-select {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .voice-guidance-bar {
+  background: #0a1932 !important;
+  border: 1px solid rgba(180, 220, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .timeline-item {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .timeline-item:hover {
+  background: #1a396a !important;
+}
+
+html[data-theme="dark"] .superfoods-box {
+  background: linear-gradient(180deg, rgba(5, 46, 22, 0.7) 0%, #0f223f 40%) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+}
+
+html[data-theme="dark"] .avoid-box {
+  background: linear-gradient(180deg, rgba(69, 10, 10, 0.7) 0%, #0f223f 40%) !important;
+  border: 1px solid rgba(244, 63, 94, 0.3) !important;
+}
+
+html[data-theme="dark"] .btn-save-wallet {
+  background: #142d54 !important;
+  border: 1px solid rgba(180, 220, 255, 0.2) !important;
+  color: #cbdcf5 !important;
+}
+
+/* ===================================================
+   SCROLLBAR & MISC
+   =================================================== */
+html[data-theme="dark"] ::-webkit-scrollbar {
+  width: 10px;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #061021 !important;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #0d9488 !important;
+  border-radius: 10px;
+}

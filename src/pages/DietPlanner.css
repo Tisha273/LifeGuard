@@ -1,0 +1,545 @@
+/* ==========================================================================
+   AI NUTRITION & PREVENTIVE DIET PLANNER STYLES
+   ========================================================================== */
+
+.diet-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 80px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0f172a;
+}
+
+/* Header */
+.diet-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.diet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.diet-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.6px;
+}
+
+.diet-subtitle {
+  color: #64748b;
+  font-size: 15px;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Selector Card */
+.diet-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
+  padding: 28px;
+  margin-bottom: 28px;
+  transition: all 0.3s ease;
+}
+
+.diet-section-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Condition Chips */
+.conditions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.condition-pill {
+  padding: 9px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.condition-pill:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.condition-pill.selected {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.15);
+}
+
+/* Preferences Two-Column Grid */
+.diet-pref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.pref-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pref-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pref-select {
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.pref-select:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+/* Generate Button */
+.btn-generate-diet {
+  width: 100%;
+  padding: 15px 24px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.btn-generate-diet:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.4);
+}
+
+.btn-generate-diet:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= GENERATED PLAN RESULTS ================= */
+
+.plan-result-card {
+  animation: slideUp 0.35s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Protocol Card */
+.protocol-hero-card {
+  background: linear-gradient(135deg, #052e16 0%, #064e3b 50%, #065f46 100%);
+  border-radius: 24px;
+  padding: 32px 28px;
+  color: white;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 30px rgba(5, 46, 22, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.protocol-hero-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.protocol-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #86efac;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.protocol-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.4px;
+}
+
+.protocol-focus {
+  font-size: 14.5px;
+  color: #bbf7d0;
+  margin: 0 0 20px 0;
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+/* Macros Bar */
+.macro-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.macro-tile {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.macro-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #86efac;
+  margin-bottom: 4px;
+}
+
+.macro-val {
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+}
+
+/* Spoken Guidance Bar */
+.voice-guidance-bar {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.voice-guidance-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+.btn-play-diet-voice {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-play-diet-voice:hover {
+  background: #15803d;
+}
+
+/* Circadian Meal Timeline */
+.timeline-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 20px -3px rgba(15, 23, 42, 0.04);
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.timeline-item:hover {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  transform: translateX(3px);
+}
+
+.timeline-time-badge {
+  background: #16a34a;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.timeline-meal-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.timeline-meal-desc {
+  font-size: 14px;
+  color: #334155;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.timeline-clinical-why {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Superfoods & Avoid Split Grid */
+.diet-split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.superfoods-box {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #bbf7d0;
+  padding: 22px;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 40%);
+}
+
+.avoid-box {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #fecdd3;
+  padding: 22px;
+  background: linear-gradient(180deg, #fff1f2 0%, #ffffff 40%);
+}
+
+.split-box-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.superfoods-box .split-box-title { color: #15803d; }
+.avoid-box .split-box-title { color: #be123c; }
+
+.superfoods-list, .avoid-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.superfood-item {
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.superfood-name {
+  font-weight: 800;
+  color: #15803d;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.avoid-item {
+  font-size: 13.5px;
+  color: #475569;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.avoid-bullet {
+  color: #e11d48;
+  font-weight: 800;
+}
+
+/* Save Button Card */
+.diet-footer-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-save-wallet {
+  padding: 13px 24px;
+  border-radius: 12px;
+  border: none;
+  background: #0f172a;
+  color: white;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-save-wallet:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+.btn-save-wallet.saved {
+  background: #16a34a;
+}
+
+/* ================= DARK THEME OVERRIDES ================= */
+[data-theme="dark"] .diet-container {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .diet-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .diet-card,
+[data-theme="dark"] .timeline-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .diet-section-title {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .condition-pill {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .condition-pill.selected {
+  background: #052e16;
+  border-color: #22c55e;
+  color: #86efac;
+}
+
+[data-theme="dark"] .pref-select {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .voice-guidance-bar {
+  background: #052e16;
+  border-color: #166534;
+}
+
+[data-theme="dark"] .timeline-item {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .timeline-meal-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .timeline-meal-desc {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .superfoods-box {
+  background: linear-gradient(180deg, #052e16 0%, #1e293b 40%);
+  border-color: #166534;
+}
+
+[data-theme="dark"] .avoid-box {
+  background: linear-gradient(180deg, #450a0a 0%, #1e293b 40%);
+  border-color: #991b1b;
+}
+
+[data-theme="dark"] .superfood-item,
+[data-theme="dark"] .avoid-item {
+  color: #cbd5e1;
+}

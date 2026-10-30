@@ -1,0 +1,47 @@
+{
+  "name": "lifeguard-final-teal-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon backend/server.js",
+    "start:prod": "node backend/server.js",
+    "build:render": "npm install && npm run build && cd backend && npm install",
+    "db:view": "node backend/view-db.js",
+    "dev": "concurrently -n \"CLIENT,SERVER\" -c \"cyan,magenta\" \"npm start\" \"npm run server\""
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.4",
+    "firebase": "^12.8.0",
+    "framer-motion": "^12.28.1",
+    "lucide-react": "^0.553.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-onesignal": "^3.4.0",
+    "react-router-dom": "^6.30.2",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.5.0",
+    "sweetalert2": "^11.26.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "nodemon": "^3.1.14"
+  }
+}
