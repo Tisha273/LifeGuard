@@ -237,32 +237,6 @@ function MainApp() {
           </NavLink>
         </nav>
 
-        {/* PWA App Install Button */}
-        <button
-          onClick={() => triggerGlobalInstall()}
-          className="btn-sidebar-install"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            width: "100%",
-            padding: "9px 14px",
-            background: "linear-gradient(135deg, rgba(13, 148, 136, 0.2), rgba(6, 182, 212, 0.15))",
-            border: "1px solid rgba(45, 212, 191, 0.35)",
-            borderRadius: 10,
-            color: "#2dd4bf",
-            fontWeight: 700,
-            fontSize: 13,
-            cursor: "pointer",
-            margin: "8px 0 12px 0",
-            transition: "all 0.2s ease",
-          }}
-          title={lang === "hi" ? "ऐप इंस्टॉल करें" : "Install App"}
-        >
-          <span style={{ fontSize: 16 }}>📲</span>
-          <span>{lang === "hi" ? "ऐप इंस्टॉल करें" : "Install App"}</span>
-        </button>
-
         {/* User Mini Profile Card in Sidebar */}
         <div className="sidebar-profile-card">
           <div className="sidebar-avatar">🛡️</div>
