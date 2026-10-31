@@ -117,7 +117,8 @@ async function connectDB() {
     try {
       console.log("🔄 Connecting to configured MongoDB URI...");
       await mongoose.connect(customMongoUri, {
-        serverSelectionTimeoutMS: 5000,
+        serverSelectionTimeoutMS: 2500,
+        connectTimeoutMS: 2500,
       });
       console.log("☁️ MongoDB Atlas / Custom DB Connected Successfully");
       await seedDemoUser();
@@ -184,34 +185,34 @@ async function connectDB() {
 /* ================= SERVER START ================= */
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
-  const server = app.listen(PORT, () => {
-    console.log(`🔥 Server running on http://localhost:${PORT}`);
-  });
+const server = app.listen(PORT, () => {
+  console.log(`🔥 Server running on http://localhost:${PORT}`);
+});
 
-  const cleanup = async (callback) => {
-    console.log("\n🛑 Shutting down server gracefully...");
+connectDB();
+
+const cleanup = async (callback) => {
+  console.log("\n🛑 Shutting down server gracefully...");
+  try {
+    await mongoose.disconnect();
+  } catch (e) {}
+  if (memoryServer) {
     try {
-      await mongoose.disconnect();
+      await memoryServer.stop();
     } catch (e) {}
-    if (memoryServer) {
-      try {
-        await memoryServer.stop();
-      } catch (e) {}
-      memoryServer = null;
-    }
-    server.close(() => {
-      if (typeof callback === "function") callback();
-      else process.exit(0);
-    });
-  };
+    memoryServer = null;
+  }
+  server.close(() => {
+    if (typeof callback === "function") callback();
+    else process.exit(0);
+  });
+};
 
-  process.on("SIGINT", () => cleanup());
-  process.on("SIGTERM", () => cleanup());
-  process.once("SIGUSR2", () => {
-    cleanup(() => {
-      process.kill(process.pid, "SIGUSR2");
-    });
+process.on("SIGINT", () => cleanup());
+process.on("SIGTERM", () => cleanup());
+process.once("SIGUSR2", () => {
+  cleanup(() => {
+    process.kill(process.pid, "SIGUSR2");
   });
 });
 

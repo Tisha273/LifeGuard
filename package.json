@@ -2,12 +2,16 @@
   "name": "lifeguard-final-teal-prototype",
   "version": "0.1.0",
   "private": true,
+  "main": "electron.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently -k -n \"CLIENT,SERVER\" -c \"cyan,magenta\" \"npm run client\" \"npm run server\"",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon backend/server.js",
+    "desktop": "electron .",
+    "pack:win": "electron-packager . LifeGuard --platform=win32 --arch=x64 --icon=public/favicon.ico --out=dist --overwrite",
     "start:prod": "node backend/server.js",
     "build:render": "npm install && npm run build && cd backend && npm install",
     "db:view": "node backend/view-db.js",
@@ -42,6 +46,8 @@
   },
   "devDependencies": {
     "concurrently": "^10.0.6",
+    "electron": "^45.1.0",
+    "electron-packager": "^17.1.2",
     "nodemon": "^3.1.14"
   }
 }
