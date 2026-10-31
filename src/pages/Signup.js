@@ -48,18 +48,20 @@ export default function Signup({ onSuccess, switchToLogin }) {
     setLoading(true);
 
     try {
-      const res = await api.post("/users/signup", {
+      await api.post("/users/signup", {
         name: trimmedUser,
         email: trimmedEmail,
         password: pass,
       });
 
-      // Save session credentials
-      localStorage.setItem("lg_user", JSON.stringify(res.data.user));
-      localStorage.setItem("lg_token", res.data.token);
-      localStorage.setItem("lg_auth", "true");
-
-      onSuccess();
+      // Clear any pending state and navigate new user to login
+      navigate("/auth/login", {
+        replace: true,
+        state: {
+          successMessage: "Account created successfully! Please log in with your credentials.",
+          registeredIdentifier: trimmedUser,
+        },
+      });
     } catch (err) {
       console.error("Signup error:", err);
       const serverMessage = err.response?.data?.message;

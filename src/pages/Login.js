@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Auth.css";
 import api from "../api";
 
 export default function Login({ onSuccess, switchToSignup }) {
   const navigate = useNavigate();
-  const [identifier, setIdentifier] = useState("");
+  const location = useLocation();
+
+  const [identifier, setIdentifier] = useState(
+    location.state?.registeredIdentifier || ""
+  );
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(
+    location.state?.successMessage || ""
+  );
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.successMessage) {
+      setSuccess(location.state.successMessage);
+    }
+    if (location.state?.registeredIdentifier) {
+      setIdentifier(location.state.registeredIdentifier);
+    }
+  }, [location.state]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     const cleanIdentifier = identifier.trim();
     if (!cleanIdentifier) {
@@ -36,7 +53,11 @@ export default function Login({ onSuccess, switchToSignup }) {
       localStorage.setItem("lg_token", res.data.token);
       localStorage.setItem("lg_auth", "true");
 
-      onSuccess();
+      if (typeof onSuccess === "function") {
+        onSuccess();
+      } else {
+        navigate("/app");
+      }
     } catch (err) {
       console.error("Login failed:", err);
       const serverMessage = err.response?.data?.message;
@@ -121,6 +142,13 @@ export default function Login({ onSuccess, switchToSignup }) {
           <p className="sub">Log in to manage your health and records</p>
         </div>
 
+        {success && (
+          <div className="auth-success" role="status">
+            <span className="auth-success-icon">✅</span>
+            <span>{success}</span>
+          </div>
+        )}
+
         {error && (
           <div className="auth-error" role="alert">
             <span className="auth-error-icon">⚠️</span>
@@ -139,6 +167,7 @@ export default function Login({ onSuccess, switchToSignup }) {
               onChange={(e) => {
                 setIdentifier(e.target.value);
                 setError("");
+                setSuccess("");
               }}
               autoComplete="username"
               required
@@ -155,6 +184,7 @@ export default function Login({ onSuccess, switchToSignup }) {
               onChange={(e) => {
                 setPass(e.target.value);
                 setError("");
+                setSuccess("");
               }}
               autoComplete="current-password"
               required
