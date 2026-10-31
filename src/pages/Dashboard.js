@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LangContext } from "../App";
 import Swal from "sweetalert2";
+import api from "../api";
 import {
   LineChart,
   Line,
@@ -12,6 +13,78 @@ import {
   CartesianGrid,
 } from "recharts";
 import "./Dashboard.css";
+
+const getTodayStr = () => new Date().toISOString().split("T")[0];
+
+const initStreakData = (userKey) => {
+  const todayStr = getTodayStr();
+  try {
+    const raw = localStorage.getItem(`lg_streak_${userKey}`);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.date === todayStr) {
+        return {
+          baseStreak: typeof parsed.baseStreak === "number" ? parsed.baseStreak : 0,
+          todayGoalDone: Boolean(parsed.todayGoalDone),
+          habits: {
+            meds: Boolean(parsed.habits?.meds),
+            water: typeof parsed.habits?.water === "number" ? parsed.habits.water : 0,
+            breathing: Boolean(parsed.habits?.breathing),
+          },
+          completedDays: Array.isArray(parsed.completedDays) ? parsed.completedDays : [],
+          history: parsed.history || {},
+          date: todayStr,
+        };
+      } else {
+        // Date changed (new day rollover)
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+        let newBase = typeof parsed.baseStreak === "number" ? parsed.baseStreak : 0;
+        if (parsed.todayGoalDone && parsed.date === yesterdayStr) {
+          newBase = newBase + 1;
+        } else if (parsed.date !== yesterdayStr) {
+          newBase = 0; // missed consecutive days
+        }
+
+        const newObj = {
+          baseStreak: newBase,
+          todayGoalDone: false,
+          habits: {
+            meds: false,
+            water: 0,
+            breathing: false,
+          },
+          completedDays: Array.isArray(parsed.completedDays) ? parsed.completedDays : [],
+          history: {
+            ...(parsed.history || {}),
+            [parsed.date]: parsed.todayGoalDone ? 100 : (parsed.score || 0),
+          },
+          date: todayStr,
+        };
+        localStorage.setItem(`lg_streak_${userKey}`, JSON.stringify(newObj));
+        return newObj;
+      }
+    }
+  } catch (e) {
+    console.warn("Failed to parse streakData:", e);
+  }
+
+  // Brand-new user default: 0 streak, 0 water, 0 habits completed
+  return {
+    baseStreak: 0,
+    todayGoalDone: false,
+    habits: {
+      meds: false,
+      water: 0,
+      breathing: false,
+    },
+    completedDays: [],
+    history: {},
+    date: todayStr,
+  };
+};
 
 export default function Dashboard() {
   const { lang } = useContext(LangContext);
@@ -36,37 +109,15 @@ export default function Dashboard() {
 
   // Single Adherence Streak Activity with 3 Simple Daily Habits
   const streakStorageKey = `lg_streak_${userKey}`;
-  const [streakData, setStreakData] = useState(() => {
-    try {
-      const saved = localStorage.getItem(streakStorageKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return {
-          baseStreak: parsed.baseStreak || 5,
-          todayGoalDone: parsed.todayGoalDone || false,
-          habits: {
-            meds: parsed.habits?.meds || false,
-            water: typeof parsed.habits?.water === "number" ? parsed.habits.water : 4,
-            breathing: parsed.habits?.breathing || false,
-          },
-          date: new Date().toISOString().split("T")[0],
-        };
-      }
-    } catch (e) {}
-    return {
-      baseStreak: 5,
-      todayGoalDone: false,
-      habits: {
-        meds: false,
-        water: 4,
-        breathing: false,
-      },
-      date: new Date().toISOString().split("T")[0],
-    };
-  });
+  const [streakData, setStreakData] = useState(() => initStreakData(userKey));
+
+  // Reset streak data if user account switches
+  useEffect(() => {
+    setStreakData(initStreakData(userKey));
+  }, [userKey]);
 
   const completedHabitsCount =
-    (streakData.habits.meds ? 1 : 0) +
+    (streakData.habits.meds || allMedsTaken ? 1 : 0) +
     (streakData.habits.water >= 8 ? 1 : 0) +
     (streakData.habits.breathing ? 1 : 0);
 
@@ -86,39 +137,41 @@ export default function Dashboard() {
   ];
 
   const weekDays = dayLabels.map((d) => {
-    const isPast = d.dayNum < mondayFirstIndex;
     const isToday = d.dayNum === mondayFirstIndex;
+    const isCompleted = streakData.completedDays?.includes(d.dayNum);
     return {
       label: d.label,
       isToday,
-      active: isPast ? true : isToday ? streakData.todayGoalDone : false,
+      active: isToday ? streakData.todayGoalDone : Boolean(isCompleted),
     };
   });
 
-  // Current Display Streak: Stable baseline + 1 when today's habits are all done
+  // Current Display Streak: 0 for new user, advances only when habits are completed
+  const baseStreak = typeof streakData.baseStreak === "number" ? streakData.baseStreak : 0;
   const currentStreakCount = streakData.todayGoalDone
-    ? (streakData.baseStreak || 5) + 1
-    : (streakData.baseStreak || 5);
+    ? baseStreak + 1
+    : baseStreak;
 
   // Calculate Today's Real-Time Adherence Score based on user actions:
-  // Baseline: 60% • Meds: +20% • Water: +10% • Breathing: +10% (Max 100%)
-  const medsRatio = reminders.length > 0
-    ? (takenCount / reminders.length)
-    : (streakData.habits.meds ? 1 : 0);
-  const waterRatio = Math.min(1, (streakData.habits.water || 0) / 8);
-  const breathRatio = streakData.habits.breathing ? 1 : 0;
-  const todayAdherenceScore = Math.round(60 + (medsRatio * 20) + (waterRatio * 10) + (breathRatio * 10));
+  // Meds: 50% • Water (up to 8 glasses): 25% • Mindful Breathing: 25%
+  const medsScore = reminders.length > 0
+    ? (takenCount / reminders.length) * 50
+    : (streakData.habits.meds ? 50 : 0);
+  const waterScore = Math.min(25, ((streakData.habits.water || 0) / 8) * 25);
+  const breathScore = streakData.habits.breathing ? 25 : 0;
+  const todayAdherenceScore = Math.round(medsScore + waterScore + breathScore);
 
-  // 7-Day Health & Adherence Trend Graph Data (Today is dynamically computed in real-time)
-  const healthTrendData = [
-    { day: "Mon", score: 85 },
-    { day: "Tue", score: 88 },
-    { day: "Wed", score: 91 },
-    { day: "Thu", score: todayAdherenceScore },
-    { day: "Fri", score: streakData.todayGoalDone ? 95 : 90 },
-    { day: "Sat", score: 92 },
-    { day: "Sun", score: 94 },
-  ];
+  // 7-Day Health & Adherence Trend Graph Data (Calculated dynamically)
+  const healthTrendData = dayLabels.map((d) => {
+    if (d.dayNum === mondayFirstIndex) {
+      return { day: d.label, score: todayAdherenceScore };
+    }
+    const pastScore = streakData.history?.[d.label] || (streakData.completedDays?.includes(d.dayNum) ? 100 : 0);
+    return {
+      day: d.label,
+      score: d.dayNum < mondayFirstIndex ? pastScore : 0,
+    };
+  });
 
   const t = {
     en: {
@@ -257,39 +310,53 @@ export default function Dashboard() {
 
   const str = t[lang] || t.en;
 
-  // Save Reminders to LocalStorage
+  // Save Reminders strictly to current user's key
   const saveReminders = (updated) => {
-    if (user?.email) localStorage.setItem(`smart_reminders_${user.email}`, JSON.stringify(updated));
-    if (user?._id) localStorage.setItem(`smart_reminders_${user._id}`, JSON.stringify(updated));
-    localStorage.setItem(`smart_reminders_guest`, JSON.stringify(updated));
+    const userReminderKey = userKey === "guest" ? "smart_reminders_guest" : `smart_reminders_${userKey}`;
+    localStorage.setItem(userReminderKey, JSON.stringify(updated));
   };
 
-  // Load Real Data from localStorage
+  // Load Real Data from localStorage and Backend API
   const loadRealData = () => {
     const displayName = user?.name || user?.username || (lang === "hi" ? "साथी" : "Member");
     setUserName(displayName);
-    setUserEmail(user?.email || "patient@lifeguard.ai");
+    setUserEmail(user?.email || "");
 
     const hr = new Date().getHours();
     if (hr < 12) setGreeting(str.morning);
     else if (hr < 18) setGreeting(str.afternoon);
     else setGreeting(str.evening);
 
-    // Real Reminders
-    const localReminders =
-      JSON.parse(localStorage.getItem(`smart_reminders_${user?.email}`) || "null") ||
-      JSON.parse(localStorage.getItem(`smart_reminders_${user?._id}`) || "null") ||
-      JSON.parse(localStorage.getItem(`smart_reminders_guest`) || "[]");
+    // Load Reminders strictly for this specific user (NEVER fall back to guest/demo data)
+    const userReminderKey = userKey === "guest" ? "smart_reminders_guest" : `smart_reminders_${userKey}`;
+    const localReminders = JSON.parse(localStorage.getItem(userReminderKey) || "[]");
     setReminders(localReminders);
 
-    // Ensure meds habit matches reminders state
+    // Ensure meds habit matches actual reminders state
     if (localReminders.length > 0) {
       const allTaken = localReminders.every((r) => r.taken);
-      if (allTaken && !streakData.habits.meds) {
-        updateHabit("meds", true);
-      } else if (!allTaken && streakData.habits.meds) {
-        updateHabit("meds", false);
+      if (allTaken !== streakData.habits.meds) {
+        updateHabit("meds", allTaken);
       }
+    }
+
+    // Also fetch latest reminders from backend API if user is logged in
+    if (user?._id || user?.id) {
+      api.get(`/reminders/${user._id || user.id}`)
+        .then((res) => {
+          if (Array.isArray(res.data)) {
+            const formatted = res.data.map((r) => ({
+              id: r._id,
+              text: r.medicineName,
+              time: r.time,
+              timing: r.dosage,
+              taken: Boolean(r.isCompleted || r.taken),
+            }));
+            setReminders(formatted);
+            localStorage.setItem(userReminderKey, JSON.stringify(formatted));
+          }
+        })
+        .catch(() => {});
     }
   };
 
@@ -313,17 +380,31 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, [showBreathingModal]);
 
-  // Update Habit & Check Streak Completion (Stable & Non-jumping)
+  // Update Habit & Check Streak Completion (Accurate & Stable)
   const updateHabit = (habitKey, value) => {
     setStreakData((prev) => {
       const nextHabits = { ...prev.habits, [habitKey]: value };
       const allDone = Boolean(nextHabits.meds && nextHabits.water >= 8 && nextHabits.breathing);
       const wasDone = prev.todayGoalDone;
 
+      const currentDayNum = mondayFirstIndex;
+      const nextCompletedDays = [...(prev.completedDays || [])];
+      if (allDone && !nextCompletedDays.includes(currentDayNum)) {
+        nextCompletedDays.push(currentDayNum);
+      } else if (!allDone && nextCompletedDays.includes(currentDayNum)) {
+        const idx = nextCompletedDays.indexOf(currentDayNum);
+        if (idx !== -1) nextCompletedDays.splice(idx, 1);
+      }
+
       const updated = {
         ...prev,
         habits: nextHabits,
         todayGoalDone: allDone,
+        completedDays: nextCompletedDays,
+        history: {
+          ...(prev.history || {}),
+          [dayLabels[currentDayNum - 1]?.label]: allDone ? 100 : todayAdherenceScore,
+        },
       };
       localStorage.setItem(streakStorageKey, JSON.stringify(updated));
 
@@ -415,13 +496,22 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Real Doses Completed Counter (Synchronized 100% with Meds Habit & Reminders) */}
-        {reminders.length > 0 && (
+        {/* Real Doses Completed Counter */}
+        {reminders.length > 0 ? (
           <div className="real-dose-card">
             <div className="dose-big-num">
               {takenCount} / {reminders.length}
             </div>
             <div className="dose-sub-txt">{str.todayDosesLabel}</div>
+          </div>
+        ) : (
+          <div className="real-dose-card" style={{ opacity: 0.85 }}>
+            <div className="dose-big-num" style={{ fontSize: 18, color: "#94a3b8" }}>
+              0
+            </div>
+            <div className="dose-sub-txt">
+              {lang === "hi" ? "कोई सक्रिय रिमाइंडर नहीं" : "No Active Reminders"}
+            </div>
           </div>
         )}
       </div>
@@ -463,7 +553,7 @@ export default function Dashboard() {
                     ? allMedsTaken
                       ? `✓ ${str.allMedsCompleted}`
                       : `${takenCount}/${reminders.length} ${str.taken}`
-                    : str.habitMedsSub}
+                    : (streakData.habits.meds ? `✓ ${str.allMedsCompleted}` : (lang === "hi" ? "कोई सक्रिय दवा रिमाइंडर नहीं" : "No active medication scheduled"))}
                 </p>
               </div>
             </div>
@@ -691,7 +781,7 @@ export default function Dashboard() {
             <LineChart data={healthTrendData} margin={{ top: 10, right: 20, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
               <XAxis dataKey="day" tickLine={false} axisLine={{ stroke: "#e2e8f0" }} />
-              <YAxis domain={[70, 100]} tickLine={false} axisLine={false} />
+              <YAxis domain={[0, 100]} tickLine={false} axisLine={false} />
               <Tooltip
                 formatter={(val) => [`${val}%`, "Adherence Score"]}
                 contentStyle={{
